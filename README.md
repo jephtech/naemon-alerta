@@ -26,7 +26,7 @@ yum install -y git curl gcc make libcurl-devel
 
 In Debian/Ubuntu:
 ```
-apt-get install -y git curl gcc make libcurl-dev
+apt-get install -y git curl gcc make libcurl-dev libcurl4-openssl-dev libglib2.0-dev
 ```
 
 Installation (Naemon)

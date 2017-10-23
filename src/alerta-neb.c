@@ -8,7 +8,10 @@
 
 #include <string.h>
 
-#include "config.h"
+#include "naemon.h"
+#include "logging.h"
+
+#include "configuration.h"
 
 #include "nebmodules.h"
 #include "nebcallbacks.h"
@@ -17,9 +20,8 @@
 #include "neberrors.h"
 #include "broker.h"
 
-#include "config.h"
+#include "configuration.h"
 #include "common.h"
-#include "nagios.h"
 
 #include "uthash.h"
 
@@ -193,31 +195,31 @@ void
 log_debug(char *message)
 {
   if (debug)
-    write_to_all_logs (message, NSLOG_INFO_MESSAGE);
+    nm_log (NSLOG_INFO_MESSAGE, message);
 }
 
 void
 log_info(char *message)
 {
-  write_to_all_logs (message, NSLOG_INFO_MESSAGE);
+  nm_log (NSLOG_INFO_MESSAGE, message);
 }
 
 void
 log_warning(char *message)
 {
-  write_to_all_logs (message, NSLOG_RUNTIME_WARNING);
+  nm_log (NSLOG_RUNTIME_WARNING, message);
 }
 
 void
 log_config(char *message)
 {
-  write_to_all_logs (message, NSLOG_CONFIG_ERROR);
+  nm_log (NSLOG_CONFIG_ERROR, message);
 }
 
 void
 log_error(char *message)
 {
-  write_to_all_logs(message, NSLOG_RUNTIME_ERROR);
+  nm_log(NSLOG_RUNTIME_ERROR, message);
 }
 
 int
