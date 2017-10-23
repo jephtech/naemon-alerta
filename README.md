@@ -1,9 +1,9 @@
-Nagios-to-Alerta Gateway
+Naemon-to-Alerta Gateway
 ========================
 
 [![Build Status](https://travis-ci.org/alerta/nagios-alerta.png)](https://travis-ci.org/alerta/nagios-alerta)
 
-Consolidate Nagios alerts from across multiple sites into a single
+Consolidate Nagios/Naemon alerts from across multiple sites into a single
 "at-a-glance" console. Nagios 3 and Nagios 4 are now supported.
 
 Transform this ...
@@ -29,21 +29,12 @@ In Debian/Ubuntu:
 apt-get install -y git curl gcc make libcurl-dev
 ```
 
-Installation (Nagios 3)
+Installation (Naemon)
 ------------
 
-    $ git clone https://github.com/alerta/nagios-alerta.git
-    $ cd nagios-alerta
-    $ make
-    $ sudo make install
-    $ sudo service nagios restart
-
-Installation (Nagios 4)
-------------
-
-    $ git clone https://github.com/alerta/nagios-alerta.git
-    $ cd nagios-alerta
-    $ make nagios4
+    $ git clone https://github.com/jephtech/naemon-alerta.git
+    $ cd naemon-alerta
+    $ make naemon
     $ sudo make install
     $ sudo service nagios restart
 
@@ -51,7 +42,7 @@ Alerts
 ------
 
 To forward host and service check results to Alerta,
-modify `/etc/nagios/nagios.cfg` as follows:
+modify `/etc/naemon/naemon.cfg` as follows:
 ```
 broker_module=/usr/lib/nagios/alerta-neb.o http://localhost:8080
 ```
@@ -133,7 +124,7 @@ define hostgroup {
 ```
 
 3. Define a Heartbeat service check to execute every minute and add it
-to `/etc/nagios/conf.d/services_nagios2.cfg`:
+to `/etc/naemon/conf.d/services_nagios2.cfg`:
 ```
 define service {
         hostgroup_name                  nagios-servers
