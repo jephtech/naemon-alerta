@@ -20,7 +20,6 @@
 #include "neberrors.h"
 #include "broker.h"
 
-#include "configuration.h"
 #include "common.h"
 
 #include "uthash.h"
