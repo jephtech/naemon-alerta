@@ -257,6 +257,8 @@ send_to_alerta(char *url, char *message)
   if (res != CURLE_OK) {
     snprintf (message, MESSAGE_SIZE, "[alerta] curl_easy_perform() failed: %s", curl_easy_strerror (res));
     log_error (message);
+    curl_slist_free_all (headers);
+    curl_easy_cleanup (curl);
     return res;
   }
   curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &status);
